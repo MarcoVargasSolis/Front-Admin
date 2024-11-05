@@ -1,11 +1,12 @@
 import React from "react";
+import BackButton from "../BackButton";
 import ProductList from "../componentesProductos/ProductList";
 
 const Productos = () =>{
     return(
         <div>
-            <h1>Gestión de Productos</h1>
             <ProductList />
+            <BackButton />
         </div>
     );
 };

@@ -1,9 +1,13 @@
 import React from 'react';
+import BackButton from '../BackButton';
+import OrderList from '../componentesPedidos/OrderList';
 
 const Pedidos = () => {
   return (
     <div>
-      <h1>Gestión de Pedidos</h1>
+      <OrderList />
+      <BackButton />
+
     </div>
   );
 };

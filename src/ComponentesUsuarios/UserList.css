@@ -1,0 +1,74 @@
+.user-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 30vh;
+    padding: 20px;
+}
+
+h2{
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.add-user-form{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.add-user-form input{
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.add-user-form button{
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.add-user-form button:hover{
+    background-color: #45a049;
+}
+
+table{
+    width: 90%;
+    border-collapse: collapse;
+}
+
+thead th{
+    background-color: #4caf50;
+    color: white;
+    padding: 20px;
+    text-align: left;
+}
+
+tbody td{
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+button{
+    padding: 5px 10x;
+    font-size: 15px;
+    margin: 3px;
+    color: white;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #45a049;
+}

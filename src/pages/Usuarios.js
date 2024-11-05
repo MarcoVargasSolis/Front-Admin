@@ -1,10 +1,12 @@
 import React from 'react';
+import BackButton from '../BackButton';
+import UserList from '../ComponentesUsuarios/UserList';
 
 const Usuarios = () => {
   return (
     <div>
-      <h1>Gestión de Usuarios</h1>
-      {/* Aquí va el contenido de la tabla de productos */}
+      <UserList />
+      <BackButton />
     </div>
   );
 };

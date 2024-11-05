@@ -6,7 +6,7 @@ const Home = () =>{
 
     return(
         <div style={styles.container}>
-            <h1>Panel de Control</h1>
+            <h1 className='title'>Panel de Control</h1>
             <button style={styles.button} onClick={() => navigate('/Productos')}>Productos</button>
             <button style={styles.button} onClick={() => navigate('/Pedidos')}>Pedidos</button>
             <button style={styles.button} onClick={() => navigate('/Usuarios')}>Usuarios</button>
@@ -21,6 +21,14 @@ const styles = {
       alignItems: 'center',
       padding: '20px',
     },
+
+    title: {
+      fontSize: '80px',
+      fontWeight: 'bold',
+      marginBottom: '20px',
+      textAlign: 'center',
+    },
+
     button: {
       margin: '10px',
       padding: '15px 30px',

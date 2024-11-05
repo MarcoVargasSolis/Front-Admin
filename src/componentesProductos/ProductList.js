@@ -33,7 +33,7 @@ const ProductList = () => {
 
     return (
         <div className="product-list-container">
-            <h2>Productos</h2>
+            <h2>Gestión de Productos</h2>
             <ProductForm onSave={editingProduct ? handleUpdateProduct : handleAddProduct} product={editingProduct} />
             <table>
                 <thead>
