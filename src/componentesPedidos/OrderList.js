@@ -1,75 +1,78 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import './OrderList.css';
 
-const OrderList = () =>{
+const OrderList = () => {
     const [orders, setOrders] = useState([]);
 
-    useEffect(() =>{
-        const sampleOrders = [
-            {
-                id: "1",
-                userId: "1",
-                products: [
-                    {productId: '1', quantity: 2},
-                    {productId: '2', quantity: 1}
-                ],
-                totalAmount: 250,
-                deliveryAddress: 'Av Siempre Viva 123',
-                status: 'Pendiente',
-                creationDate: '2023-11-03',
-            },
-            {
-                id: '2',
-                userId: '2',
-                products: [{prodctId: '3', quantity: 1}],
-                totalAmount: 100,
-                deliveryAddress: 'calle nueva 123',
-                status: 'enviado',
-                creationDate: '2023-11-04',
-            }
-        ];
-        setOrders(sampleOrders);
+    // Obtener todas las órdenes al montar el componente
+    useEffect(() => {
+        fetchOrders();
     }, []);
 
-    const changeOrderStatus = (orderId, newStatus) => {
-        setOrders(prevOrders =>
-            prevOrders.map(order =>
-                order.id === orderId ? { ...order, status: newStatus } : order
-            )
-        );
+    const fetchOrders = async () => {
+        try {
+            const response = await axios.get("https://tienda-opal.vercel.app/orders");
+            setOrders(response.data);
+        } catch (error) {
+            console.error("Error al obtener las órdenes:", error);
+        }
     };
 
-    return(
-        <div className="table-container">
-            <h2>Gestión de Pedidos</h2>
+    // Cambiar el estado de una orden
+    const updateOrderStatus = async (orderId, newStatus) => {
+        try {
+            await axios.put(`https://tienda-opal.vercel.app/orders/${orderId}`, { status: newStatus });
+            // Actualizar las órdenes en el estado local
+            setOrders(orders.map(order => 
+                order.id === orderId ? { ...order, status: newStatus } : order
+            ));
+        } catch (error) {
+            console.error("Error al actualizar el estado de la orden:", error);
+        }
+    };
+
+    // Eliminar una orden
+    const deleteOrder = async (orderId) => {
+        try {
+            await axios.delete(`https://tienda-opal.vercel.app/orders/${orderId}`);
+            setOrders(orders.filter(order => order.id !== orderId));
+        } catch (error) {
+            console.error("Error al eliminar la orden:", error);
+        }
+    };
+
+    return (
+        <div className="order-list">
+            <h2>Lista de Órdenes</h2>
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Usuario</th>
                         <th>Total</th>
-                        <th>Dirección</th>
+                        <th>Dirección de entrega</th>
                         <th>Estado</th>
-                        <th>Fecha de Creación</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {orders.map(order =>(
+                    {orders.map(order => (
                         <tr key={order.id}>
                             <td>{order.id}</td>
-                            <td>{order.totalAmount}</td>
+                            <td>{order.userId}</td>
+                            <td>${order.totalAmount}</td>
                             <td>{order.deliveryAddress}</td>
                             <td>{order.status}</td>
-                            <td>{order.creationDate}</td>
                             <td>
-                                <select
-                                    value={order.status}
-                                    onChange={(e) => changeOrderStatus(order.id, e.target.value)}>
-                                    <option value="pendiente">Pendiente</option>
-                                    <option value="enviado">Enviado</option>
-                                    <option value="entregado">Entregado</option>
-                                    <option value="cancelado">Cancelado</option>
-                                </select>
+                                {/* Botón para actualizar el estado */}
+                                <button onClick={() => updateOrderStatus(order.id, "completado")}>
+                                    Marcar como completado
+                                </button>
+                                {/* Botón para eliminar la orden */}
+                                <button onClick={() => deleteOrder(order.id)}>
+                                    Eliminar
+                                </button>
                             </td>
                         </tr>
                     ))}

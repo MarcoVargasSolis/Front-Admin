@@ -1,17 +1,18 @@
 /* Contenedor Principal */
 .product-list-container {
-    max-width: 900px;
+    max-width: 90%;
     margin: auto;
-    padding: 20px;
+    padding: 50px;
     font-family: Arial, sans-serif;
     color: #333;
   }
 
   /* Título principal */
   .product-list-container h2 {
-    font-size: 50px;
+    font-size: 40px;
     font-weight: bold;
     margin-bottom: 20px;
+    text-align: center;
   }
 
   /* Subtítulo */
@@ -76,10 +77,10 @@
     background-color: #c82333;
   }
 
-  /* Estilo ormulario productos */
+  /* Estilo formulario productos */
   .product-form {
-    margin-top: 20px;
-    padding: 20px;
+    margin-top: 80px;
+    padding: 60px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -90,7 +91,7 @@
   .product-form input[type="number"],
   .product-form input[type="url"],
   .product-form select {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 10px;
     font-size: 14px;
@@ -111,7 +112,7 @@
   .product-form button {
     background-color: #007bff;
     color: white;
-    padding: 10px 15px;
+    padding: 10px 35px;
     font-size: 14px;
     border: none;
     border-radius: 5px;
@@ -122,4 +123,11 @@
   .product-form button:hover {
     background-color: #0056b3;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .product-form h1{
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
   }
